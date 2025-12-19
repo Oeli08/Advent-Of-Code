@@ -76,7 +76,7 @@ class Lock
 {
     public int current = 50;
     public int password = 0;
-
+    public List<Number> numbers = new List<Number>();
     public void Increase(int value)
     {
         password += value / 100;
@@ -87,6 +87,7 @@ class Lock
         }
 
         current = (current + value) % 100;
+        numbers.Add(new Number { value = current, counter = password, toNull = (100 - current) % 100 });
 
     }
 
@@ -106,7 +107,7 @@ class Lock
     public void ParseRotations(string input)
     {
         string[] lines = input.Split('\n', StringSplitOptions.RemoveEmptyEntries);
-
+        Console.WriteLine(lines.Length);
         foreach (string line in lines)
         {
             char dir = line[0];
@@ -118,4 +119,10 @@ class Lock
                 Decrease(value);
         }
     }
+}
+class Number
+{
+    public int value;
+    public int counter;
+    public int toNull;
 }
