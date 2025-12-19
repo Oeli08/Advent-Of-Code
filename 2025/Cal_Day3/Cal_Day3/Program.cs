@@ -158,6 +158,7 @@ class Battery
                             result += Convert.ToString(highestNumbers[l]);
                         }
                         sum += BigInteger.Parse(result);//noch zu kleiner Datentyp vllt
+                        break;
                     }
                 }
             }
