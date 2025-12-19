@@ -9,7 +9,7 @@ class Programm
         IdHandler handler = new IdHandler();
         handler.IdParser();
         Console.WriteLine(handler.counter);
-        Console.WriteLine(handler.counter2);
+        //Console.WriteLine(handler.counter2);
         //handler.NumberCounter();
     }
 }
@@ -21,7 +21,7 @@ class IdHandler
 
     public void IdParser()
     {
-        string input = System.IO.File.ReadAllText("Day2_Input.txt");
+        string input = System.IO.File.ReadAllText("input.txt");
         string[] lines = input.Split(',', StringSplitOptions.RemoveEmptyEntries);
 
         foreach (string line in lines)
