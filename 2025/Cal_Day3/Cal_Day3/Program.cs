@@ -144,11 +144,12 @@ class Battery
                         {
                             highestNumbers[j] = line[i + j] - '0';
                             highestIs[j] = i;
-                            for (int k = highestIs[j]; k < highestNumbers.Length - j && k + j <= 88 && i >= highestIs[i]; k++) //For (int k = highestIs[j] muss geändert werden (Fehler Unbekannt)
+                            for (int k = 0; k < highestNumbers.Length - j && k + j <= 88 && i + k >= highestIs[k +j]; k++)
                             {
                                 highestNumbers[j + k] = line[i + j + k] - '0';
                                 highestIs[j + k] = i + k;
                             }
+                            break;
                         }
                     }
                     if (line.Length - 1 == i)
@@ -157,7 +158,11 @@ class Battery
                         {
                             result += Convert.ToString(highestNumbers[l]);
                         }
-                        sum += BigInteger.Parse(result);//noch zu kleiner Datentyp vllt
+                        BigInteger bigInteger = BigInteger.Parse(result);
+                        sum += bigInteger;//noch zu kleiner Datentyp vllt
+                        result = "";
+                        highestNumbers = new double[12];
+                        highestIs = new int[12];
                         break;
                     }
                 }
