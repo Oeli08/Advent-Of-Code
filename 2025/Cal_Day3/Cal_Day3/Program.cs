@@ -117,7 +117,7 @@ class Programm
 class Battery
 {
     BigInteger sum = BigInteger.Zero;
-    double[] highestNumbers = new double[12];
+    int[] highestNumbers = new int[12];  
     int[] highestIs = new int[12];
 
     public BigInteger SortHighest()
@@ -138,18 +138,17 @@ class Battery
             {
                 for (int j = 0; j < highestNumbers.Length; j++)
                 {
-                    if (i+j < line.Length)
+                    if (i + j < line.Length)
                     {
-                        if (highestNumbers[j] < line[i + j] - '0' && i <= 88)
+                        if (highestNumbers[j] < line[i + j] - '0' && i <= line.Length - 12)
                         {
                             highestNumbers[j] = line[i + j] - '0';
                             highestIs[j] = i;
-                            for (int k = 0; k < highestNumbers.Length - j && k + j <= 88 && i + k >= highestIs[k +j]; k++)
+                            for (int k = 0; k < highestNumbers.Length - j && k + j <= line.Length - 12 && i + k >= highestIs[k + j]; k++)
                             {
                                 highestNumbers[j + k] = line[i + j + k] - '0';
                                 highestIs[j + k] = i + k;
                             }
-                            break;
                         }
                     }
                     if (line.Length - 1 == i)
@@ -161,14 +160,46 @@ class Battery
                         BigInteger bigInteger = BigInteger.Parse(result);
                         sum += bigInteger;//noch zu kleiner Datentyp vllt
                         result = "";
-                        highestNumbers = new double[12];
+                        highestNumbers = new int[12];
                         highestIs = new int[12];
                         break;
                     }
                 }
             }
         }
-        result = "";
+        //result = "";
+
+
+
+        //string input = System.IO.File.ReadAllText("Input.txt");
+        //string[] lines = input.Split('\n', StringSplitOptions.RemoveEmptyEntries);
+        //BigInteger sum = BigInteger.Zero;
+
+        //foreach (string line in lines)
+        //{
+        //    int toRemove = line.Length - 12;
+        //    var stack = new List<char>();
+
+        //    foreach (char c in line)
+        //    {
+        //        while (stack.Count > 0 &&
+        //               toRemove > 0 &&
+        //               stack[^1] < c)
+        //        {
+        //            stack.RemoveAt(stack.Count - 1);
+        //            toRemove--;
+        //        }
+        //        stack.Add(c);
+        //    }
+
+        //    // falls noch zu viele Ziffern
+        //    while (stack.Count > 12)
+        //        stack.RemoveAt(stack.Count - 1);
+
+        //    BigInteger value = BigInteger.Parse(new string(stack.ToArray()));
+        //    sum += value;
+        //}
+
         return sum;
     }
 }
