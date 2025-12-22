@@ -266,11 +266,6 @@ class Battery
 
             if (oldValue != correctValue)
             {
-                Console.WriteLine($"❌ Unterschied in Zeile {i + 1}");
-                Console.WriteLine(lines[i]);
-                Console.WriteLine($"Alt     : {oldValue}");
-                Console.WriteLine($"Richtig : {correctValue}");
-                Console.WriteLine();
             }
         }
 

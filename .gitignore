@@ -417,3 +417,7 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+Elia/simple_points.py
+Elia/main.py
+Elia/DayOneNodes.py
+Elia/DayOneData.py
