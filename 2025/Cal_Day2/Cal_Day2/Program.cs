@@ -97,6 +97,9 @@ class IdHandler
         }
     }
 }
+public class Id
+{
+}
 
 //if (line.length % 2 == 5)
 //{}
