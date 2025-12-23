@@ -265,7 +265,7 @@ class Battery
             BigInteger correctValue = Greedy(lines[i]);
 
             if (oldValue != correctValue)
-            {
+            {  
             }
         }
 
