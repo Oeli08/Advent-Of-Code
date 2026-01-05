@@ -22,39 +22,45 @@ class Paper
                 map[x, y] = lines[y][x].ToString();
             }
         }
-
-        for (int y = 0; y < map.GetLength(1); y++)
+        int counterBefore = counter + 1;
+        while (counter != counterBefore)
         {
-            for (int x = 0; x < map.GetLength(0); x++)
+            counterBefore = counter;
+            for (int y = 0; y < map.GetLength(1); y++)
             {
-                if (map[x, y] == "@")
+                for (int x = 0; x < map.GetLength(0); x++)
                 {
-                    int paperCounter = 0;
-                    for (int yy = y - 1; yy < y + 2; yy++)
+                    if (map[x, y] == "@")
                     {
-                        if ( yy < 0) continue;
-                        for (int xx = x - 1; xx < x + 2; xx++)
+                        int paperCounter = 0;
+                        for (int yy = y - 1; yy < y + 2; yy++)
                         {
-                            if (xx == x && yy == y) continue;
-                            if (xx < 0) continue;
-                            if (xx < map.GetLength(0) && yy < map.GetLength(1))
+                            if (yy < 0) continue;
+                            for (int xx = x - 1; xx < x + 2; xx++)
                             {
-                                if (map[xx, yy] == "@")
+                                if (xx == x && yy == y) continue;
+                                if (xx < 0) continue;
+                                if (xx < map.GetLength(0) && yy < map.GetLength(1))
                                 {
-                                    paperCounter++;
+                                    if (map[xx, yy] == "@")
+                                    {
+                                        paperCounter++;
+                                    }
                                 }
                             }
                         }
+                        if (paperCounter < 4)
+                        {
+                            map[x, y] = ".";
+                            counter++;
+                        }
                     }
-                    if (paperCounter < 4)
+                    else
                     {
-                        counter++;
                     }
-                }
-                else
-                {
                 }
             }
         }
+        
     }
 }
